@@ -11,7 +11,7 @@ class IntroVideoPageState extends State<IntroVideoPage> {
   @override
   void initState() {
     Future.delayed(
-      const Duration(milliseconds: 14100),
+      const Duration(seconds: 47),
       () => Navigator.of(context).pushNamed('/customise1'),
     );
     super.initState();
@@ -25,7 +25,7 @@ class IntroVideoPageState extends State<IntroVideoPage> {
         height: double.infinity,
         color: Colors.black,
         child: const Image(
-          image: AssetImage('intro_video_gif.gif'),
+          image: AssetImage('intro_video_final.gif'),
         ),
       ),
     );

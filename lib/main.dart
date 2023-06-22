@@ -2,7 +2,6 @@ library game;
 
 import 'dart:ui';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
@@ -10,7 +9,6 @@ import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter/services.dart';
-import 'package:audioplayers_web/audioplayers_web.dart';
 
 part './sprites/mc_sprite.dart';
 part './sprites/npc_sprite.dart';
@@ -95,7 +93,6 @@ class GameData {
 }
 
 GameData? gameData;
-final AudioPlayer audioPlayer = AudioPlayer();
 
 void main() {
   gameData = GameData(
@@ -121,7 +118,6 @@ class OdysseyApp extends StatefulWidget {
 class OdysseyAppState extends State<OdysseyApp> {
   @override
   void initState() {
-    //audioPlayer.play(AssetSource('audio/milky_powdery_way.wav'));
     super.initState();
   }
 
@@ -144,7 +140,9 @@ class OdysseyAppState extends State<OdysseyApp> {
         '/customise2': (context) =>
             const Material(child: CustomiseCharacterPage2()),
         '/save': (context) => const Material(child: IntroVideoPage()),
-        '/end': (context) => const Material(child: EndPage(),),
+        '/end': (context) => const Material(
+              child: EndPage(),
+            ),
         '/game': (context) => Material(
               child: GameWidget(
                 game: STEMOdyssey(
@@ -210,7 +208,11 @@ class OdysseyAppState extends State<OdysseyApp> {
                     );
                   },
                   'lab_info': (context, game) {
-                    return const DialogOverlay(message: "Info");
+                    return const DialogOverlay(
+                        message:
+                            """As a Researcher, I'm always at the forefront of scientific progress, and each new day brings some new breakthrough. As someone who is vividly passionate about learning new things and chipping away at human ignorance, this job is a dream come to life!
+ 
+One challenge that we face is finding funding for our research. As a result of multiple researchers competing for the same grants and funding, competition can be fierce. However, there are many ways you can get funding and it's a breeze if your proposal is up to standard!""");
                   },
                   'unlockable_inventory': (context, STEMOdyssey game) {
                     return Center(
@@ -255,7 +257,6 @@ class OdysseyAppState extends State<OdysseyApp> {
 
   @override
   void dispose() {
-    audioPlayer.stop();
     super.dispose();
   }
 }

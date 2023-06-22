@@ -45,4 +45,5 @@ app.*.map.json
 
 # Large Assets
 assets/intro_video_gif.gif
+assets/intro_video_final.gif
 assets/audio/milky_powdery_way.wav

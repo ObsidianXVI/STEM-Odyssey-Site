@@ -8,6 +8,7 @@ import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter/services.dart';
 import 'package:audioplayers_web/audioplayers_web.dart';
@@ -139,6 +140,8 @@ class OdysseyAppState extends State<OdysseyApp> {
         '/intro': (context) => const Material(child: IntroVideoPage()),
         '/customise1': (context) =>
             const Material(child: CustomiseCharacterPage1()),
+        '/customise2': (context) =>
+            const Material(child: CustomiseCharacterPage2()),
         '/save': (context) => const Material(child: IntroVideoPage()),
         '/game': (context) => Material(
               child: GameWidget(
@@ -147,10 +150,14 @@ class OdysseyAppState extends State<OdysseyApp> {
                   gameData: gameData,
                 ),
                 overlayBuilderMap: {
-                  'press_n_dialog': (context, game) {
+                  'press_e_dialog': (context, game) {
+                    return const DialogOverlay(
+                        message: 'Press E to enter buildings!');
+                  },
+                  'press_i_dialog': (context, game) {
                     return const DialogOverlay(
                         message:
-                            'Press E to interact with the NPCs and find out more about their jobs!');
+                            'Press I to interact with the NPCs and find out more about their jobs!');
                   },
                   'new_unlockable': (context, STEMOdyssey game) {
                     Future.delayed(
@@ -199,6 +206,9 @@ class OdysseyAppState extends State<OdysseyApp> {
                         });
                       },
                     );
+                  },
+                  'lab_info': (context, game) {
+                    return const DialogOverlay(message: "Info");
                   },
                   'unlockable_inventory': (context, STEMOdyssey game) {
                     return Center(

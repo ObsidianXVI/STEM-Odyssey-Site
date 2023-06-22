@@ -68,6 +68,17 @@ class CustomiseCharacterPage1 extends StatelessWidget {
                 ],
               ),
             ),
+            Positioned(
+              bottom: 15,
+              right: 5,
+              width: 140,
+              height: 50,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed('/customise2');
+                },
+              ),
+            ),
             // Positioned(child: child), // Sprite, colors, etc.
           ],
         ),

@@ -104,6 +104,26 @@ class MCSprite extends SpriteAnimationComponent
             }
             return true;
           },
+          LogicalKeyboardKey.keyI: (keysPressed) {
+            if (game.overlays.isActive('lab_info')) {
+              game.overlays.remove('lab_info');
+            } else {
+              game.overlays.add('lab_info');
+            }
+            return true;
+          },
+          LogicalKeyboardKey.keyP: (keysPressed) {
+            game.overlays.add('press_e_dialog');
+            Future.delayed(const Duration(seconds: 2),
+                () => game.overlays.remove('press_e_dialog'));
+            return true;
+          },
+          LogicalKeyboardKey.keyO: (keysPressed) {
+            game.overlays.add('press_i_dialog');
+            Future.delayed(const Duration(seconds: 2),
+                () => game.overlays.remove('press_i_dialog'));
+            return true;
+          },
         },
       ),
     ]);

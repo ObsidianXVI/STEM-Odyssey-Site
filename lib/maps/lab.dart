@@ -30,8 +30,8 @@ class LabSprite extends SpriteComponent with HasGameRef<STEMOdyssey> {
         imgSrc: 'npc_guard.png',
         position: position +
             Vector2(
-              30 * STEMOdyssey.tileSize,
-              31 * STEMOdyssey.tileSize,
+              28 * STEMOdyssey.tileSize,
+              24 * STEMOdyssey.tileSize,
             ),
       ),
       mcs,

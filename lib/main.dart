@@ -8,7 +8,6 @@ import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:flutter/services.dart';
 import 'package:audioplayers_web/audioplayers_web.dart';
@@ -23,6 +22,7 @@ part './elements/item_dialog.dart';
 part './elements/unlockable.dart';
 part './elements/dialog_overlay.dart';
 part './elements/inventory_overlay.dart';
+part './elements/menu.dart';
 
 part './maps/fullmap.dart';
 part './maps/lab.dart';
@@ -32,6 +32,7 @@ part './screens/disclaimer.dart';
 part './screens/intro_video.dart';
 part './screens/customise_1.dart';
 part './screens/customise_2.dart';
+part './screens/end.dart';
 
 part './schemas/avatar.dart';
 part './schemas/journey.dart';
@@ -98,7 +99,7 @@ final AudioPlayer audioPlayer = AudioPlayer();
 
 void main() {
   gameData = GameData(
-    avatarData: AvatarData(
+    avatarData: const AvatarData(
       name: 'name',
       age: 10,
       subjects: [],
@@ -143,6 +144,7 @@ class OdysseyAppState extends State<OdysseyApp> {
         '/customise2': (context) =>
             const Material(child: CustomiseCharacterPage2()),
         '/save': (context) => const Material(child: IntroVideoPage()),
+        '/end': (context) => const Material(child: EndPage(),),
         '/game': (context) => Material(
               child: GameWidget(
                 game: STEMOdyssey(
@@ -240,6 +242,9 @@ class OdysseyAppState extends State<OdysseyApp> {
                         ),
                       ),
                     );
+                  },
+                  'side_menu': (context, STEMOdyssey game) {
+                    return SideMenu();
                   },
                 },
               ),

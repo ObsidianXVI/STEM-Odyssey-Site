@@ -124,6 +124,12 @@ class MCSprite extends SpriteAnimationComponent
                 () => game.overlays.remove('press_i_dialog'));
             return true;
           },
+          LogicalKeyboardKey.keyK: (keysPressed) {
+            game.overlays.add('side_menu');
+            Future.delayed(const Duration(seconds: 2),
+                () => game.overlays.remove('side_menu'));
+            return true;
+          },
         },
       ),
     ]);

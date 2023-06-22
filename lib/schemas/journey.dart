@@ -3,7 +3,7 @@ part of game;
 class JourneyData {
   final List<UnlockableItem> unlockables;
 
-  const JourneyData({
+  JourneyData({
     required this.unlockables,
   });
 }

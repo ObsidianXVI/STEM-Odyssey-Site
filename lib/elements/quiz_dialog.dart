@@ -20,26 +20,23 @@ class QuizDialog extends StatelessWidget {
           message: message,
         ),
         Center(
-          child: GestureDetector(
-            onTap: () {},
-            child: Container(
-              width: 700,
-              height: 400,
-              child: Center(
-                child: GridView.count(
-                  primary: false,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 2,
-                  mainAxisSpacing: 2,
-                  childAspectRatio: 4 / 2,
-                  children: List<QuizOption>.generate(4, (index) {
-                    return QuizOption(
-                      label: entries.elementAt(index).key,
-                      isCorrect: entries.elementAt(index).value,
-                      parent: this,
-                    );
-                  }),
-                ),
+          child: Container(
+            width: 700,
+            height: 400,
+            child: Center(
+              child: GridView.count(
+                primary: false,
+                crossAxisCount: 2,
+                crossAxisSpacing: 2,
+                mainAxisSpacing: 2,
+                childAspectRatio: 4 / 2,
+                children: List<QuizOption>.generate(4, (index) {
+                  return QuizOption(
+                    label: entries.elementAt(index).key,
+                    isCorrect: entries.elementAt(index).value,
+                    parent: this,
+                  );
+                }),
               ),
             ),
           ),

@@ -1,7 +1,7 @@
 part of game;
 
-class CustomiseCharacterPage1 extends StatelessWidget {
-  const CustomiseCharacterPage1({super.key});
+class CustomiseCharacterPage2 extends StatelessWidget {
+  const CustomiseCharacterPage2({super.key});
 
   @override
   Widget build(BuildContext context) {

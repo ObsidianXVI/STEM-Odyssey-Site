@@ -2,6 +2,7 @@ library game;
 
 import 'dart:ui';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
@@ -20,6 +21,7 @@ part './elements/quiz_dialog.dart';
 part './elements/item_dialog.dart';
 part './elements/unlockable.dart';
 part './elements/dialog_overlay.dart';
+part './elements/inventory_overlay.dart';
 
 part './maps/fullmap.dart';
 part './maps/lab.dart';
@@ -28,6 +30,7 @@ part './screens/launch.dart';
 part './screens/disclaimer.dart';
 part './screens/intro_video.dart';
 part './screens/customise_1.dart';
+part './screens/customise_2.dart';
 
 part './schemas/avatar.dart';
 part './schemas/journey.dart';
@@ -82,17 +85,18 @@ class STEMOdyssey extends FlameGame
 
 class GameData {
   final AvatarData avatarData;
-  final JourneyData journeyData = const JourneyData(unlockables: []);
+  final JourneyData journeyData = JourneyData(unlockables: []);
 
-  const GameData({
+  GameData({
     required this.avatarData,
   });
 }
 
 GameData? gameData;
+final AudioPlayer audioPlayer = AudioPlayer();
 
 void main() {
-  gameData = const GameData(
+  gameData = GameData(
     avatarData: AvatarData(
       name: 'name',
       age: 10,
@@ -105,10 +109,20 @@ void main() {
   runApp(const OdysseyApp());
 }
 
-class OdysseyApp extends StatelessWidget {
+class OdysseyApp extends StatefulWidget {
   const OdysseyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<StatefulWidget> createState() => OdysseyAppState();
+}
+
+class OdysseyAppState extends State<OdysseyApp> {
+  @override
+  void initState() {
+    //audioPlayer.play(AssetSource('audio/milky_powdery_way.wav'));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -153,9 +167,16 @@ class OdysseyApp extends StatelessWidget {
                       const Duration(seconds: 2),
                       () => game.overlays.remove('unlocked_item'),
                     );
+
                     return ItemDialog(
                       label: game.unlockedItemName!,
                       imgSrc: game.unlockedItemSrc!,
+                      game: game,
+                    );
+                  },
+                  'inventory_overlay': (context, STEMOdyssey game) {
+                    return InventoryOverlay(
+                      gameData: game.gameData!,
                       game: game,
                     );
                   },
@@ -215,5 +236,11 @@ class OdysseyApp extends StatelessWidget {
             ),
       },
     );
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.stop();
+    super.dispose();
   }
 }

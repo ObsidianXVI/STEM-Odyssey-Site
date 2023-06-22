@@ -30,6 +30,14 @@ class ItemDialogState extends State<ItemDialog>
   ));
 
   @override
+  void initState() {
+    gameData!.journeyData.unlockables.add(
+      UnlockableItem(imgSrc: widget.imgSrc),
+    );
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -65,7 +73,7 @@ class ItemDialogState extends State<ItemDialog>
                 const SizedBox(height: 40),
                 TextButton(
                   onPressed: () {
-                    widget.game.overlays.add('overlayName');
+                    widget.game.overlays.add('inventory_overlay');
                   },
                   child: const Text(
                     'Preview',

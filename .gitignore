@@ -43,5 +43,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Assets
-./assets/intro_video_gif.gif
+# Large Assets
+assets/intro_video_gif.gif
+assets/audio/milky_powdery_way.wav
